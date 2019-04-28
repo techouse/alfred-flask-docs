@@ -7,8 +7,8 @@ class Config(object):
     # How long to cache results for
     CACHE_MAX_AGE = 20  # seconds
     # Icon
-    FLASK_ICON = 'icon.png'
+    FLASK_ICON = "icon.png"
     # Algolia credentials
-    ALGOLIA_APP_ID = 'WODHKE4WZG'
-    ALGOLIA_SEARCH_ONLY_API_KEY = '7456cdd91ba8d4f87846549697397759'
-    ALGOLIA_SEARCH_INDEX = 'flask'
+    ALGOLIA_APP_ID = "WODHKE4WZG"
+    ALGOLIA_SEARCH_ONLY_API_KEY = "7456cdd91ba8d4f87846549697397759"
+    ALGOLIA_SEARCH_INDEX = "flask"
