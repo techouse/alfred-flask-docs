@@ -1,5 +1,9 @@
 # Flask Docs Workflow for Alfred
 
+![GitHub release](https://img.shields.io/github/release/techouse/alfred-flask-docs.svg)
+![GitHub All Releases](https://img.shields.io/github/downloads/techouse/alfred-flask-docs/total.svg)
+![GitHub](https://img.shields.io/github/license/techouse/alfred-flask-docs.svg)
+
 Search the [Flask documentation](http://flask.pocoo.org/docs/1.0/) using [Alfred](https://www.alfredapp.com/). 
 
 ![demo](demo.gif)
