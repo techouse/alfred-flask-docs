@@ -8,6 +8,7 @@ class Config(object):
     CACHE_MAX_AGE = 20  # seconds
     # Icon
     FLASK_ICON = "icon.png"
+    GOOGLE_ICON = "google.png"
     # Algolia credentials
     ALGOLIA_APP_ID = "WODHKE4WZG"
     ALGOLIA_SEARCH_ONLY_API_KEY = "7456cdd91ba8d4f87846549697397759"
