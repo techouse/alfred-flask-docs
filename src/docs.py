@@ -6,11 +6,12 @@ from __future__ import print_function, unicode_literals, absolute_import
 import functools
 import re
 import sys
+from textwrap import wrap
 from urllib import quote_plus
 
 from algoliasearch.search_client import SearchClient
 from config import Config
-from workflow import Workflow, ICON_INFO
+from workflow import Workflow3, ICON_INFO
 
 # Algolia client
 client = SearchClient.create(Config.ALGOLIA_APP_ID, Config.ALGOLIA_SEARCH_ONLY_API_KEY)
@@ -26,7 +27,7 @@ def cache_key(query):
     key = key.lower()
     key = re.sub(r"[^a-z0-9-_;.]", "-", key)
     key = re.sub(r"-+", "-", key)
-    log.debug("Cache key : {!r} -> {!r}".format(query, key))
+    # log.debug("Cache key : {!r} -> {!r}".format(query, key))
     return key
 
 
@@ -60,8 +61,6 @@ def main(wf):
 
     query = wf.args[0].strip()
 
-    log.debug("query : {!r}".format(query))
-
     if not query:
         wf.add_item("Search the Flask docs...")
         wf.send_feedback()
@@ -72,6 +71,8 @@ def main(wf):
 
     query = " ".join(words)
 
+    log.debug("query : {!r}".format(query))
+
     key = cache_key(query)
 
     results = [
@@ -81,7 +82,8 @@ def main(wf):
         )
     ]
 
-    log.debug("{} results for {!r}".format(len(results), query))
+    # log.debug("{} results for {!r}".format(len(results), query))
+
     # Show results
     if not results:
         url = "https://www.google.com/search?q={}".format(
@@ -89,7 +91,7 @@ def main(wf):
         )
         wf.add_item(
             "No matching answers found",
-            "Try a and search Google?",
+            "Shall I try and search Google?",
             valid=True,
             arg=url,
             copytext=url,
@@ -98,10 +100,14 @@ def main(wf):
         )
 
     for result in results:
+        subtitle = wrap(result["content"], width=75)[0]
+        if len(result["content"]) > 75:
+            subtitle += " ..."
+
         wf.add_item(
             uid=result["id"],
             title=result["id"],
-            subtitle=result["content"],
+            subtitle=subtitle,
             arg=result["permalink"],
             valid=True,
             largetext=result["title"],
@@ -115,7 +121,7 @@ def main(wf):
 
 
 if __name__ == "__main__":
-    wf = Workflow(
+    wf = Workflow3(
         update_settings={"github_slug": "techouse/alfred-flask-docs", "frequency": 7}
     )
     log = wf.logger

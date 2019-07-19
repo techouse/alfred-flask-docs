@@ -39,6 +39,8 @@
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -77,7 +79,7 @@
 			<key>uid</key>
 			<string>9CD5E9DE-7116-4632-91A8-1CA381F10126</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -100,7 +102,7 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Search the Flask documentation using Alfred</string>
 	<key>uidata</key>
 	<dict>
 		<key>0A7A05D1-2AA4-458A-85FF-9F1C225796EE</key>
@@ -118,7 +120,11 @@
 			<integer>170</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.5</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/techouse</string>
 </dict>
 </plist>
