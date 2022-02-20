@@ -21,13 +21,13 @@ index = client.init_index(Config.ALGOLIA_SEARCH_INDEX)
 log = None
 
 
-def cache_key(query):
+def cache_key(query, version=Config.DEFAULT_FLASK_VERSION):
     """Make filesystem-friendly cache key"""
-    key = query
+    key = query + "_" + version
     key = key.lower()
     key = re.sub(r"[^a-z0-9-_;.]", "-", key)
     key = re.sub(r"-+", "-", key)
-    # log.debug("Cache key : {!r} -> {!r}".format(query, key))
+    # log.debug("Cache key : {!r} {!r} -> {!r}".format(query, version, key))
     return key
 
 
@@ -41,9 +41,18 @@ def handle_result(api_dict):
     return result
 
 
-def search(query=None, limit=Config.RESULT_COUNT):
+def search(
+    query=None, version=Config.DEFAULT_FLASK_VERSION, limit=Config.RESULT_COUNT
+):
     if query:
-        results = index.search(query, {"page": 0, "hitsPerPage": limit})
+        results = index.search(
+            query,
+            {
+                "facetFilters": ["version:{}".format(version)],
+                "page": 0,
+                "hitsPerPage": limit,
+            },
+        )
         if results is not None and "hits" in results:
             return results["hits"]
     return []
@@ -61,6 +70,10 @@ def main(wf):
 
     query = wf.args[0].strip()
 
+    # Tag prefix only. Treat as blank query
+    if query == "v":
+        query = ""
+
     if not query:
         wf.add_item("Search the Flask docs...")
         wf.send_feedback()
@@ -69,16 +82,26 @@ def main(wf):
     # Parse query into query string and tags
     words = query.split(" ")
 
-    query = " ".join(words)
+    query = []
+    version = Config.DEFAULT_FLASK_VERSION
 
-    log.debug("query : {!r}".format(query))
+    for word in words:
+        if word.replace("v", "") in Config.SUPPORTED_FLASK_VERSIONS:
+            version = word.replace("v", "")
+        else:
+            query.append(word)
 
-    key = cache_key(query)
+    query = " ".join(query)
+
+    # log.debug("version: {!r}".format(version))
+    # log.debug("query: {!r}".format(query))
+
+    key = cache_key(query, version)
 
     results = [
         handle_result(result)
         for result in wf.cached_data(
-            key, functools.partial(search, query), max_age=Config.CACHE_MAX_AGE
+            key, functools.partial(search, query, version), max_age=Config.CACHE_MAX_AGE
         )
     ]
 

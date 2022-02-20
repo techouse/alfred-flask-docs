@@ -24,9 +24,14 @@ flask jsonify
 
 Either press `⌘Y` to Quick Look the result, or press `<enter>` to open it in your web browser.
 
-## Supported Branches
+## Changing Branches
 
-Currently the app indexes branch __1.0__ only.
+The workflow supports searching the documentation all the active branches, that is `v0.12`, `v1`, `v1.1`, and `v2`.
+By default, it searches the `v2` branch. To search branch `v1.1` simply type `v1.1` **anywhere** in your query, like so:
+
+```
+flask jsonify v1.1
+```
 
 ### Note
 
