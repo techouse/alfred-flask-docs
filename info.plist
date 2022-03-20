@@ -12,6 +12,31 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>C62DBFB8-31AC-4FFE-BC2D-DBB0EB36898F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C62DBFB8-31AC-4FFE-BC2D-DBB0EB36898F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>00006206-A189-4DC2-B0C1-EBB063DA2665</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>D850B7E1-B6F7-4A5E-8EF6-522CBF4E0A21</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>0A7A05D1-2AA4-458A-85FF-9F1C225796EE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -32,6 +57,29 @@
 	<string>Flask Docs</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./docs -u</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>00006206-A189-4DC2-B0C1-EBB063DA2665</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -60,7 +108,7 @@
 				<key>runningsubtext</key>
 				<string>Fetching the documentation ...</string>
 				<key>script</key>
-				<string>/usr/bin/python docs.py "{query}"</string>
+				<string>./docs -q "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -80,6 +128,36 @@
 			<string>9CD5E9DE-7116-4632-91A8-1CA381F10126</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{query}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>update:workflow</string>
+						<key>outputlabel</key>
+						<string>Update Workflow</string>
+						<key>uid</key>
+						<string>D850B7E1-B6F7-4A5E-8EF6-522CBF4E0A21</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>Open URL</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>C62DBFB8-31AC-4FFE-BC2D-DBB0EB36898F</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -105,25 +183,39 @@
 	<string>Search the Flask documentation using Alfred</string>
 	<key>uidata</key>
 	<dict>
+		<key>00006206-A189-4DC2-B0C1-EBB063DA2665</key>
+		<dict>
+			<key>xpos</key>
+			<integer>910</integer>
+			<key>ypos</key>
+			<integer>95</integer>
+		</dict>
 		<key>0A7A05D1-2AA4-458A-85FF-9F1C225796EE</key>
 		<dict>
 			<key>xpos</key>
-			<integer>880</integer>
+			<integer>910</integer>
 			<key>ypos</key>
-			<integer>170</integer>
+			<integer>400</integer>
 		</dict>
 		<key>9CD5E9DE-7116-4632-91A8-1CA381F10126</key>
 		<dict>
 			<key>xpos</key>
-			<integer>550</integer>
+			<integer>435</integer>
 			<key>ypos</key>
-			<integer>170</integer>
+			<integer>235</integer>
+		</dict>
+		<key>C62DBFB8-31AC-4FFE-BC2D-DBB0EB36898F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>695</integer>
+			<key>ypos</key>
+			<integer>255</integer>
 		</dict>
 	</dict>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0.6</string>
+	<string>2.0.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/techouse</string>
 </dict>
