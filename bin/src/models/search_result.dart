@@ -17,6 +17,7 @@ class SearchResult {
   final String id;
   final String title;
   final String permalink;
+  @JsonKey(name: 'default')
   final String default_;
   final String content;
 

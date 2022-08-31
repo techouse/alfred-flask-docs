@@ -11,7 +11,7 @@ SearchResult _$SearchResultFromJson(Map<String, dynamic> json) => SearchResult(
       id: json['id'] as String,
       title: json['title'] as String,
       permalink: json['permalink'] as String,
-      default_: json['default_'] as String,
+      default_: json['default'] as String,
       content: json['content'] as String,
     );
 
@@ -21,6 +21,6 @@ Map<String, dynamic> _$SearchResultToJson(SearchResult instance) =>
       'id': instance.id,
       'title': instance.title,
       'permalink': instance.permalink,
-      'default_': instance.default_,
+      'default': instance.default_,
       'content': instance.content,
     };
