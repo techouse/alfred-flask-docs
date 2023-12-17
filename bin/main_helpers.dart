@@ -38,12 +38,10 @@ Future<void> _performSearch(String query, {String? version}) async {
     if (searchResponse.nbHits > 0) {
       final AlfredItems items = AlfredItems(
         searchResponse.hits
-            .map((Hit hit) =>
-            SearchResult.fromJson(
+            .map((Hit hit) => SearchResult.fromJson(
                 <String, dynamic>{...hit, 'objectID': hit.objectID}))
             .map(
-              (result) =>
-              AlfredItem(
+              (result) => AlfredItem(
                 uid: result.objectID,
                 title: result.id,
                 subtitle: result.content.truncate(75),
@@ -56,13 +54,13 @@ Future<void> _performSearch(String query, {String? version}) async {
                 icon: AlfredItemIcon(path: 'icon.png'),
                 valid: true,
               ),
-        )
+            )
             .toList(),
       );
       _workflow.addItems(items.items);
     } else {
       final Uri url =
-      Uri.https('www.google.com', '/search', {'q': 'Flask $query'});
+          Uri.https('www.google.com', '/search', {'q': 'Flask $query'});
 
       _workflow.addItem(
         AlfredItem(
