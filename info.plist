@@ -217,9 +217,50 @@
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
-	<array/>
-	<key>variablesdontexport</key>
-	<array/>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>3</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>3.0.x</string>
+						<string>3</string>
+					</array>
+					<array>
+						<string>2.3.x</string>
+						<string>2.3</string>
+					</array>
+					<array>
+						<string>2.2.x</string>
+						<string>2.2</string>
+					</array>
+					<array>
+						<string>2.1.x</string>
+						<string>2.1</string>
+					</array>
+					<array>
+						<string>2.0.x</string>
+						<string>2</string>
+					</array>
+					<array>
+						<string>1.1.x</string>
+						<string>1.1</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Search the documentation of this Flask version</string>
+			<key>label</key>
+			<string>Flask version</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>flask_version</string>
+		</dict>
+	</array>
 	<key>version</key>
 	<string></string>
 	<key>webaddress</key>

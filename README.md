@@ -26,12 +26,9 @@ Either press `⌘Y` to Quick Look the result, or press `<enter>` to open it in y
 
 ## Changing Branches
 
-The workflow supports searching the documentation all the active branches, that is `v0.12`, `v1`, `v1.1`, `v2`, `v2.1` and `v2.2`.
-By default, it searches the `v2.2` branch. To search branch `v1.1` simply type `v1.1` **anywhere** in your query, like so:
+The workflow supports searching the documentation of several versions. To change the branch, configure the Workflow as show in the image below.
 
-```
-flask jsonify v1.1
-```
+![configure](configure.png)
 
 ### Note
 
